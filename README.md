@@ -11,7 +11,7 @@ step 2:
       
 step 3:
 
-      python manage.py makemigrations
+      python manage.py makemigrations
       
       python manage.py migrate
       
