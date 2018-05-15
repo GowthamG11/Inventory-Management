@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+{% load rest_framework %}
+{% load static %}
+{% block content %}
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-6">
+        <form action="{% url 'inventory_create'%}" method="POST" id="inventory_create_form">
+            {% csrf_token %}
+            <div id="success_msg" style="display:none;">
+                Inventory Created Successfully.
+            </div>
+            <div id="error_msg" style="color:red">
+
+            </div>
+            {% render_form serializer %}
+            <input type="submit" class="btn btn-success" value="Save">
+        </form>
+    </div>
+</div>
+{% endblock content %}

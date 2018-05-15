@@ -1,0 +1,52 @@
+{% extends 'index.html' %}
+
+{% block user%}
+{% endblock user%}
+{% block content %}
+<div class="container" style="min-height:83vh">
+    <div class="row">
+        <div class="col-md-12" style="top:100px">
+            {% if errors %}
+                <div class=" col-md-5 alert alert-danger">
+                    {% for error in errors %}
+                        <a class="close" data-dismiss="alert" href="#">×</a>{{error}}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <form method="POST" class="form-horizontal" action="{% url 'login' %}">
+                <fieldset>
+
+                <!-- Form Name -->
+                <legend>Login Form</legend>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="textinput"></label>
+                  <div class="col-md-5">
+                    <input id="textinput" name="username" type="text" placeholder="Username" class="form-control input-md" required>
+                  </div>
+                </div>
+
+                <!-- Password input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="passwordinput"></label>
+                  <div class="col-md-5">
+                    <input id="passwordinput" name="password" type="password" placeholder="Password" class="form-control input-md" required>
+
+                  </div>
+                </div>
+
+                <!-- Button -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for=""></label>
+                  <div class="col-md-4">
+                    <button id="" name="" class="btn btn-primary">Login</button>
+                  </div>
+                </div>
+
+                </fieldset>
+            </form>
+        </div>
+	</div>
+</div>
+{% endblock content %}
