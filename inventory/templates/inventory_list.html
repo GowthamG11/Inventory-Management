@@ -8,6 +8,7 @@
                         Add Inventory
                     </a>
                 </div>
+                {% if role == "Store Manager" %}
                 <div class="col-md-6">
                     <div class="form-group">
                       <select class="form-control" id="inventory_filter" style="width:50%">
@@ -18,6 +19,7 @@
                       </select>
                     </div>
                 </div>
+                {% endif %}
             </div>
             <br/>
 
@@ -89,7 +91,7 @@
                         tbody.append(trow);
                     }
                 } else {
-                        var trow = "<tr class='odd'><td valign='top' colspan='3' class='dataTables_empty'>"+
+                        var trow = "<tr class='odd'><td valign='top' colspan='4' class='dataTables_empty'>"+
                         "No data available in table</td></tr>";
                         tbody.append(trow);
                 }

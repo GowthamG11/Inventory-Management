@@ -13,8 +13,19 @@ from inventory_mgmt.decorators import check_user_auth
 @api_view(['GET'])
 @permission_classes((permissions.AllowAny,))
 def inventory_list(request):
+    role = ''
+    if request.session.get('email'):
+        try:
+            userprofile = UserProfile.objects.get(email=request.session.get('email'))
+            if userprofile:
+                if 'Store Assistant' in userprofile.userroles.all().values_list('role__title', flat=True):
+                    role = 'Store Assistant'
+                else:
+                    role = 'Store Manager'
+        except UserProfile.DoesNotExist:
+            pass
     inventory_qs = Inventory.objects.get_queryset()
-    return render(request, 'inventory_list.html', {'inventories': inventory_qs})
+    return render(request, 'inventory_list.html', {'inventories': inventory_qs, 'role': role})
 
 
 @check_user_auth
